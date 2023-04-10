@@ -21,7 +21,7 @@ def echo(message):
     try:
         bot.send_chat_action(message.chat.id, 'typing')
         for chunk in client.send_message(
-            chatbot="chinchilla",
+            chatbot="a2",
             message=message.text,
             with_chat_break="yes",
             timeout=20,
