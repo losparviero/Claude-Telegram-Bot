@@ -6,14 +6,14 @@ from dotenv import load_dotenv
 load_dotenv()
 token = os.getenv("TOKEN")
 bot_token = os.getenv("BOT")
-bot = telebot.TeleBot(bot_token, parse_mode="HTML")
+bot = telebot.TeleBot(bot_token)
 client = poe.Client(token)
 
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
     bot.reply_to(
-        message, "<b>Welcome!</b> ✨\n<i>Send any query or ask questions.</i>")
+        message, "<b>Welcome!</b> ✨\n<i>Send any query or ask questions.</i>", parse_mode="HTML")
 
 
 @bot.message_handler(func=lambda message: True)
