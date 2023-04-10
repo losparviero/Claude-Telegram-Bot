@@ -6,6 +6,8 @@ from dotenv import load_dotenv
 load_dotenv()
 token = os.getenv("TOKEN")
 bot_token = os.getenv("BOT")
+adminId = int(os.getenv("BOT_ADMIN"))
+
 bot = telebot.TeleBot(bot_token)
 client = poe.Client(token)
 
@@ -17,7 +19,11 @@ def send_welcome(message):
 
 
 @bot.message_handler(func=lambda message: True)
-def echo(message):
+def claude(message):
+    if message.from_user.id != adminId:
+        bot.reply_to(
+            message, "<b>You are not authorized to use this bot.</b>", parse_mode="HTML")
+        return
     try:
         bot.send_chat_action(message.chat.id, 'typing')
         for chunk in client.send_message(
