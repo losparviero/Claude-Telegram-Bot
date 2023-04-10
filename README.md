@@ -23,6 +23,12 @@ Use Anthropic's Claude chat bot in Telegram.
 
 <br>
 
+### Mechanism
+
+This uses the [poe-api](https://github.com/ading2210/poe-api) module to interact with Claude using Poe.
+
+<br>
+
 ### License
 
 AGPL-3.0 ©️ Zubin
