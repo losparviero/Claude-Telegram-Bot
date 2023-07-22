@@ -16,6 +16,7 @@ dotenv.config();
 import Claude from "claude-ai";
 import { Bot, session, GrammyError, HttpError } from "grammy";
 import { run, sequentialize } from "@grammyjs/runner";
+import { hydrate } from "@grammyjs/hydrate";
 
 // Bot
 
@@ -33,10 +34,15 @@ const claude = new Claude({
   sessionKey: process.env.SESSION_KEY,
 });
 
+(async () => {
+  await claude.init();
+})();
+
 // Plugins
 
 bot.use(sequentialize(getSessionKey));
 bot.use(session({ getSessionKey }));
+bot.use(hydrate());
 bot.use(responseTime);
 bot.use(log);
 bot.use(admin);
@@ -49,6 +55,19 @@ async function admin(ctx, next) {
     botAdmins: admins,
     isAdmin: admins.includes(ctx.chat?.id),
   };
+
+  if (
+    ctx.message.text &&
+    !ctx.message.text.includes("/") &&
+    !ctx.config.isAdmin
+  ) {
+    ctx.reply("*You are not authorized to use this bot.*", {
+      reply_to_message_id: ctx.message.message_id,
+      parse_mode: "Markdown",
+    });
+    console.log("Unauthorized use detected by:\n", ctx.from);
+    return;
+  }
   await next();
 }
 
@@ -96,15 +115,27 @@ bot.command("help", async (ctx) => {
     .then(console.log("Help command sent to", ctx.chat.id));
 });
 
+bot.command("clear", async (ctx) => {
+  const statusMessage = await ctx.reply("*Conversation context cleared.*", {
+    parse_mode: "Markdown",
+  });
+  console.log("Yet to be implemented");
+  await statusMessage.delete();
+});
+
 // Messages
 
 bot.on("message:text", async (ctx) => {
-  await claude.init();
+  const statusMessage = await ctx.reply("*Processing*", {
+    parse_mode: "Markdown",
+  });
   const conversation = await claude.startConversation("Hello Claude!");
   const reply = await conversation.sendMessage(ctx.message.text);
   await ctx.reply(reply.completion, {
     reply_to_message_id: ctx.message.message_id,
+    parse_mode: "Markdown",
   });
+  await statusMessage.delete();
 });
 
 // Error
