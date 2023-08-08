@@ -30,6 +30,11 @@ function getSessionKey(ctx) {
 
 // Config
 
+if (!process.env.SESSION_KEY) {
+  console.log("Session key not set.");
+  process.exit();
+}
+
 const claude = new Claude({
   sessionKey: process.env.SESSION_KEY,
 });
@@ -129,6 +134,7 @@ bot.on("message:text", async (ctx) => {
   const statusMessage = await ctx.reply("*Processing*", {
     parse_mode: "Markdown",
   });
+  await ctx.replyWithChatAction("typing");
   const conversation = await claude.startConversation("Hello Claude!");
   const reply = await conversation.sendMessage(ctx.message.text);
   await ctx.reply(reply.completion, {
@@ -165,7 +171,5 @@ bot.catch((err) => {
 
 // Run
 
-console.log(
-  "Bot is running. Please keep this window open or use something like PM2."
-);
+console.log("Bot running.");
 run(bot);

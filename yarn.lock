@@ -29,9 +29,9 @@ abort-controller@^3.0.0:
     event-target-shim "^5.0.0"
 
 claude-ai@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/claude-ai/-/claude-ai-1.2.0.tgz#5278677125c5fc0f997e8966c3df6dc60de09b65"
-  integrity sha512-e/JfrElavlp3qVL8tEDDUN53akW4FbKarRv9peoEQNy77HnvbMgA8IN++q5skr/2XsRI6TzeLmO+cWPDcg6dkg==
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/claude-ai/-/claude-ai-1.2.1.tgz#76f4d6d988c84f3b9316d19921c0951c945e60a2"
+  integrity sha512-neQU+ndbCTGs6lVbtR6X7W2X0JyBfjv5ntct/fMvbvI327m01px3h3TDPAqUKk1uFmX+gecUGDB+ZlYRxxyQeg==
   dependencies:
     isomorphic-fetch "^3.0.0"
 
@@ -53,9 +53,9 @@ event-target-shim@^5.0.0:
   integrity sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==
 
 grammy@^1.17.1:
-  version "1.17.1"
-  resolved "https://registry.yarnpkg.com/grammy/-/grammy-1.17.1.tgz#3ebfce14a69e94adc541d3e1943aff33be207052"
-  integrity sha512-ba1xsEVMoEjvTZNhOvSYt/dgoIFbMKYnFKHw3iioKYbQMCBsoX+FbO5hRse+sxhNwQzkDmiUtzAcK5elpEJg2w==
+  version "1.17.2"
+  resolved "https://registry.yarnpkg.com/grammy/-/grammy-1.17.2.tgz#e6e081297b5d438c1344338e6b6013a3ddb7a2ec"
+  integrity sha512-5TuAzqxupkVcKXB5Jfl8F9GMXgGh/h/RcoOJThlQSJz2MMT2+2o+W/7C8ZULzrZ4TEB9TIIliPR6UW0J+1fT4w==
   dependencies:
     "@grammyjs/types" "3.1.2"
     abort-controller "^3.0.0"
@@ -93,9 +93,9 @@ webidl-conversions@^3.0.0:
   integrity sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==
 
 whatwg-fetch@^3.4.1:
-  version "3.6.16"
-  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-3.6.16.tgz#2cf24cd621459be8137f9e3c6afb60262d78f963"
-  integrity sha512-83avoGbZ0qtjtNrU3UTT3/Xd3uZ7DyfSYLuc1fL5iYs+93P+UkIVF6/6xpRVWeQcvbc7kSnVybSAVbd6QFW5Fg==
+  version "3.6.17"
+  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-3.6.17.tgz#009bbbfc122b227b74ba1ff31536b3a1a0e0e212"
+  integrity sha512-c4ghIvG6th0eudYwKZY5keb81wtFz9/WeAHAoy8+r18kcWlitUIrmGFQ2rWEl4UCKUilD3zCLHOIPheHx5ypRQ==
 
 whatwg-url@^5.0.0:
   version "5.0.0"
